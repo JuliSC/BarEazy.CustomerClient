@@ -2,13 +2,28 @@ import React from "react";
 
 interface BtnProps {
   title: string;
+  disabled?: boolean;
+  onClick?: () => void;
   className?: string;
 }
 
-const Btn: React.FC<BtnProps> = ({title, className}) => {
+const enabledClasses =
+  "bg-orange border-orange hover:border-sky-500 text-white";
+const disabledClasses = "bg-gray-500 text-gray-200";
+
+const Btn: React.FC<BtnProps> = ({
+  title,
+  className,
+  disabled = false,
+  onClick,
+}) => {
   return (
     <button
-      className={`${className} p-2 rounded shadow-lg border-2 border-solid border-orange hover:border-sky-500 ease-in-out`}
+      disabled={disabled}
+      onClick={onClick}
+      className={`rounded shadow-lg ease-in-out border-2 border-solid  ${
+        disabled ? disabledClasses : enabledClasses
+      } ${className}`}
     >
       {title}
     </button>

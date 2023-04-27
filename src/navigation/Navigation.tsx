@@ -1,6 +1,7 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "../pages/Home";
 import NavBar from "../components/NavBar";
+import NotificationContainer from "../components/notifications/NotificationContainer";
 
 const navRoutes = [<Route path="/" key="/" element={<Home />} />];
 
@@ -12,6 +13,7 @@ const Navigation: React.FC<NavigationProps> = () => {
       <NavBar />
 
       <Routes>{navRoutes}</Routes>
+      <NotificationContainer />
     </BrowserRouter>
   );
 };

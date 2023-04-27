@@ -4,7 +4,7 @@ import BeerCard from "../components/BeerCard";
 
 type BeerListType = Array<Array<string | number>>;
 
-const BeerList: React.FC = () => {
+const BeerList = () => {
   const fetchBeers = () => {
     // Implement API call here when ready
     return [

@@ -2,8 +2,12 @@ import {createSlice} from "@reduxjs/toolkit";
 import type {PayloadAction} from "@reduxjs/toolkit";
 import {Beer} from "../../@types/Beer";
 
+export interface BeerItem extends Beer {
+  id: number;
+}
+
 export interface OrderState {
-  items: Beer[];
+  items: BeerItem[];
 }
 
 interface RootState {
@@ -19,12 +23,11 @@ export const orderSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      state.items.push(action.payload);
+      const id = Math.floor(Math.random() * 100000);
+      state.items.push({id, ...action.payload});
     },
     remove: (state, action) => {
-      state.items = state.items.filter(
-        (item) => item.beerName !== action.payload.beerName
-      );
+      state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
   },
 });

@@ -5,6 +5,10 @@ import {add} from "../app/slices/orderSlice";
 import Btn from "./Btn";
 import {Beer} from "../@types/Beer";
 import formatPrice from "../utils/formatUtils";
+import {
+  addNotification,
+  selectNotifications,
+} from "../app/slices/notificationSlice";
 
 interface BeerProps {
   beer: Beer;
@@ -13,6 +17,12 @@ interface BeerProps {
 
 const BeerCard: React.FC<BeerProps> = ({beer, img}) => {
   const dispatch = useDispatch();
+  const notifications = useSelector(selectNotifications);
+
+  const handleClick = (beer: Beer) => {
+    dispatch(add(beer));
+    dispatch(addNotification(`${beer.beerName} added to order 🍺`));
+  };
 
   return (
     <div>
@@ -34,7 +44,7 @@ const BeerCard: React.FC<BeerProps> = ({beer, img}) => {
           <Btn
             title="Add To Cart"
             className="bg-orange text-black p-2"
-            onClick={() => dispatch(add(beer))}
+            onClick={() => handleClick(beer)}
           ></Btn>
         </div>
       </div>

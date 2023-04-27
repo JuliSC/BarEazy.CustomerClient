@@ -9,38 +9,33 @@ const BeerList = () => {
     // Implement API call here when ready
     return [
       {
-        beerName: "Carlsberg",
-        beerDescription: "",
-        beerPrice: 20.0,
-        beerVolume: 0.5,
+        name: "Carlsberg",
+        description: "",
+        volume: 0.5,
         alcoholPercentage: 5.0,
       },
       {
-        beerName: "Grøn Tuborg",
-        beerDescription: "",
-        beerPrice: 20.0,
-        beerVolume: 0.5,
+        name: "Grøn Tuborg",
+        description: "",
+        volume: 0.5,
         alcoholPercentage: 5.0,
       },
       {
-        beerName: "Tuborg Classic",
-        beerDescription: "",
-        beerPrice: 22.0,
-        beerVolume: 0.5,
+        name: "Tuborg Classic",
+        description: "",
+        volume: 0.5,
         alcoholPercentage: 5.0,
       },
       {
-        beerName: "Albani",
-        beerDescription: "",
-        beerPrice: 15.0,
-        beerVolume: 0.5,
+        name: "Albani",
+        description: "",
+        volume: 0.5,
         alcoholPercentage: 5.0,
       },
       {
-        beerName: "Dansk Pilsner",
-        beerDescription: "",
-        beerPrice: 10.0,
-        beerVolume: 0.5,
+        name: "Dansk Pilsner",
+        description: "",
+        volume: 0.5,
         alcoholPercentage: 5.0,
       },
     ];
@@ -69,7 +64,7 @@ const BeerList = () => {
     <div>
       {beerQuery.data?.map((beer, i) => (
         <BeerCard
-          key={beer.beerName}
+          key={beer.name}
           beer={beer}
           img={imageQuery.data ? imageQuery.data[i].toString() : ""}
         />

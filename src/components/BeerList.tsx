@@ -5,9 +5,15 @@ import BeerCard from "../components/BeerCard";
 type BeerListType = Array<Array<string | number>>;
 
 const BeerList = () => {
-  const fetchBeers = () => {
+  const fetchBeers = async ()  => {
     // Implement API call here when ready
-    return [
+    const res = await fetch("https://localhost:7075/beers", {
+      method: "GET"
+    })
+
+    return res.json()
+
+    /* return [
       {
         name: "Carlsberg",
         description: "",
@@ -38,7 +44,7 @@ const BeerList = () => {
         volume: 0.5,
         alcoholPercentage: 5.0,
       },
-    ];
+    ]; */
   };
 
   const fetchImages = async ({queryKey}: {queryKey: QueryKey}) => {
@@ -64,7 +70,7 @@ const BeerList = () => {
     <div>
       {beerQuery.data?.map((beer, i) => (
         <BeerCard
-          key={beer.name}
+          key={i}
           beer={beer}
           img={imageQuery.data ? imageQuery.data[i].toString() : ""}
         />

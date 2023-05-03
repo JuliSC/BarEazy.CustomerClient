@@ -21,7 +21,7 @@ const BeerCard: React.FC<BeerProps> = ({beer, img}) => {
 
   const handleClick = (beer: Beer) => {
     dispatch(add(beer));
-    dispatch(addNotification(`${beer.name} added to order 🍺`));
+    dispatch(addNotification(`${beer.beerName} added to order 🍺`));
   };
 
   return (
@@ -37,7 +37,7 @@ const BeerCard: React.FC<BeerProps> = ({beer, img}) => {
           )}
         </div>
         <div className="p-3 md:p-5 w-1/3">
-          <h1 className="text-md md:text-3xl font-bold">{beer.name}</h1>
+          <h1 className="text-md md:text-3xl font-bold">{beer.beerName}</h1>
           <p className="text-md md:text-lg">{}</p>
         </div>
         <div className="ml-auto">

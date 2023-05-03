@@ -43,7 +43,7 @@ const Order: React.FC<OrderProps> = (props) => {
         },
       };
 
-      const res = await fetch("https://localhost:7040/create", {
+      const res = await fetch("https://localhost:7040/api/order/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ const Order: React.FC<OrderProps> = (props) => {
       return beers.map((beer, i) => {
         return (
           <div key={i} className="flex justify-between py-2">
-            <p>{beer.name}</p>
+            <p>{beer.beerName}</p>
             <div className="flex">
               <p></p>
               <Btn

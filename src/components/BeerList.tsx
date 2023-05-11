@@ -1,44 +1,55 @@
 import React, {useEffect} from "react";
 import {QueryKey, useQuery} from "react-query";
 import BeerCard from "../components/BeerCard";
+import axios from "axios";
 
 type BeerListType = Array<Array<string | number>>;
 
 const BeerList = () => {
-  const fetchBeers = () => {
+  const fetchBeers = async () => {
     // Implement API call here when ready
-    return [
+    const beers = await fetch(
+      "https://ecfc-87-72-193-253.ngrok-free.app/beers",
       {
-        name: "Carlsberg",
-        description: "",
-        volume: 0.5,
-        alcoholPercentage: 5.0,
-      },
-      {
-        name: "Grøn Tuborg",
-        description: "",
-        volume: 0.5,
-        alcoholPercentage: 5.0,
-      },
-      {
-        name: "Tuborg Classic",
-        description: "",
-        volume: 0.5,
-        alcoholPercentage: 5.0,
-      },
-      {
-        name: "Albani",
-        description: "",
-        volume: 0.5,
-        alcoholPercentage: 5.0,
-      },
-      {
-        name: "Dansk Pilsner",
-        description: "",
-        volume: 0.5,
-        alcoholPercentage: 5.0,
-      },
-    ];
+        method: "GET",
+
+        mode: "no-cors",
+      }
+    );
+    console.log(beers);
+
+    // return [
+    //   {
+    //     name: "Carlsberg",
+    //     description: "",
+    //     volume: 0.5,
+    //     alcoholPercentage: 5.0,
+    //   },
+    //   {
+    //     name: "Grøn Tuborg",
+    //     description: "",
+    //     volume: 0.5,
+    //     alcoholPercentage: 5.0,
+    //   },
+    //   {
+    //     name: "Tuborg Classic",
+    //     description: "",
+    //     volume: 0.5,
+    //     alcoholPercentage: 5.0,
+    //   },
+    //   {
+    //     name: "Albani",
+    //     description: "",
+    //     volume: 0.5,
+    //     alcoholPercentage: 5.0,
+    //   },
+    //   {
+    //     name: "Dansk Pilsner",
+    //     description: "",
+    //     volume: 0.5,
+    //     alcoholPercentage: 5.0,
+    //   },
+    // ];
   };
 
   const fetchImages = async ({queryKey}: {queryKey: QueryKey}) => {

@@ -43,13 +43,16 @@ const Order: React.FC<OrderProps> = (props) => {
         },
       };
 
-      const res = await fetch("https://localhost:7040/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(order),
-      });
+      const res = await fetch(
+        "https://6666-87-72-193-253.ngrok-free.app/api/order/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(order),
+        }
+      );
       const data = await res.json();
       console.log(data);
 

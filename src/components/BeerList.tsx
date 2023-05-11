@@ -2,21 +2,28 @@ import React, {useEffect} from "react";
 import {QueryKey, useQuery} from "react-query";
 import BeerCard from "../components/BeerCard";
 import axios from "axios";
+import {Beer} from "../@types/Beer";
 
 type BeerListType = Array<Array<string | number>>;
 
 const BeerList = () => {
   const fetchBeers = async () => {
     // Implement API call here when ready
-    const beers = await fetch(
-      "https://ecfc-87-72-193-253.ngrok-free.app/beers",
-      {
-        method: "GET",
+    const beerRes = await fetch("http://localhost:5227/beers", {
+      method: "GET",
+    });
 
-        mode: "no-cors",
-      }
-    );
+    const beers = await beerRes.json();
     console.log(beers);
+
+    const purgedBeers = beers.filter(
+      (beer: Beer, i: number, self: any) =>
+        !self
+          .slice(i + 1)
+          .some((otherBeer: Beer) => otherBeer.beerName === beer.beerName)
+    );
+
+    return await purgedBeers;
 
     // return [
     //   {
@@ -75,7 +82,7 @@ const BeerList = () => {
     <div>
       {beerQuery.data?.map((beer, i) => (
         <BeerCard
-          key={beer.name}
+          key={beer.beerName}
           beer={beer}
           img={imageQuery.data ? imageQuery.data[i].toString() : ""}
         />

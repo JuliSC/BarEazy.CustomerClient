@@ -43,16 +43,13 @@ const Order: React.FC<OrderProps> = (props) => {
         },
       };
 
-      const res = await fetch(
-        "https://6666-87-72-193-253.ngrok-free.app/api/order/create",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(order),
-        }
-      );
+      const res = await fetch("http:localhost:7040/api/order/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      });
       const data = await res.json();
       console.log(data);
 
@@ -71,7 +68,7 @@ const Order: React.FC<OrderProps> = (props) => {
       return beers.map((beer, i) => {
         return (
           <div key={i} className="flex justify-between py-2">
-            <p>{beer.name}</p>
+            <p>{beer.beerName}</p>
             <div className="flex">
               <p></p>
               <Btn

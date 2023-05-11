@@ -1,6 +1,7 @@
 export interface Beer {
-  name: string;
-  description: string;
-  volume: number;
+  beerName: string;
+  beerPrice: number;
+  beerDescription: string;
+  beerVolume: number;
   alcoholPercentage: number;
 }

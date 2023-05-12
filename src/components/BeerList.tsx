@@ -9,7 +9,7 @@ type BeerListType = Array<Array<string | number>>;
 const BeerList = () => {
   const fetchBeers = async () => {
     // Implement API call here when ready
-    const beerRes = await fetch("http://localhost:5227/beers", {
+    const beerRes = await fetch("http://localhost:5227/api/beers", {
       method: "GET",
     });
 

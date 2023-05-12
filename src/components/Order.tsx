@@ -29,21 +29,23 @@ const Order: React.FC<OrderProps> = (props) => {
 
   const placeOrder = useMutation({
     mutationFn: async () => {
+      console.log(beers);
+
       const order: OrderDTO = {
-        email: "string",
-        name: "string",
-        description: "string",
+        email: "john@example.com",
+        name: "John Doe",
+        description: "Order from John Doe",
         beers: beers,
         paymentDetails: {
-          cardNumber: "string",
-          cardOwnerName: "string",
+          cardNumber: "1234567890",
+          cardOwnerName: "John Smith",
           expirationDate: "2023-04-27T11:28:30.546Z",
-          verificationNumber: "string",
-          email: "string",
+          verificationNumber: "867",
+          email: "john@example.com",
         },
       };
 
-      const res = await fetch("http:localhost:7040/api/order/create", {
+      const res = await fetch("https://localhost:7040/api/order/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {removeNotification} from "../../app/slices/notificationSlice";
+import {Notification} from "../../@types/Notification";
 
 interface NotificationProps {
-  notification: {
-    id: string;
-    message: string;
-  };
+  notification: Notification;
 }
 
-const Notification: React.FC<NotificationProps> = ({notification}) => {
+const NotificationCard: React.FC<NotificationProps> = ({notification}) => {
   const [show, setShow] = [useState(false), useState(null)];
 
   const dispatch = useDispatch();
@@ -32,4 +30,4 @@ const Notification: React.FC<NotificationProps> = ({notification}) => {
   );
 };
 
-export default Notification;
+export default NotificationCard;

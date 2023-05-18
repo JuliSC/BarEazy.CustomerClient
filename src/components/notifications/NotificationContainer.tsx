@@ -1,5 +1,5 @@
 import React from "react";
-import Notification from "./Notification";
+import NotificationCard from "./Notification";
 import {useSelector} from "react-redux";
 import {selectNotifications} from "../../app/slices/notificationSlice";
 
@@ -10,7 +10,10 @@ const NotificationContainer: React.FC = () => {
       {notifications && notifications.length
         ? notifications.map((notification, i) => {
             return (
-              <Notification key={i} notification={notification}></Notification>
+              <NotificationCard
+                key={i}
+                notification={notification}
+              ></NotificationCard>
             );
           })
         : null}

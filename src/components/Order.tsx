@@ -60,8 +60,6 @@ const Order: React.FC<OrderProps> = (props) => {
   });
 
   const handleClick = () => {
-    console.log("handleClick");
-
     placeOrder.mutate();
   };
 

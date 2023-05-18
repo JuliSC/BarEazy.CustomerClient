@@ -1,10 +1,6 @@
 import {createSlice, current} from "@reduxjs/toolkit";
 import type {PayloadAction} from "@reduxjs/toolkit";
-
-export interface Notification {
-  id: number;
-  message: string;
-}
+import {Notification} from "../../@types/Notification";
 
 export interface NotificationState {
   notifications: Notification[];

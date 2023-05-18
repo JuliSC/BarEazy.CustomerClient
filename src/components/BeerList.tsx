@@ -59,7 +59,7 @@ const BeerList = () => {
     // ];
   };
 
-  const fetchImages = async ({queryKey}: {queryKey: QueryKey}) => {
+  const fetchImages = async ({queryKey}: {queryKey: any}) => {
     let arr = [];
     for (const item in queryKey[1]) {
       let res = await fetch("https://picsum.photos/300/200", {
@@ -76,11 +76,13 @@ const BeerList = () => {
 
   const imageQuery = useQuery(["images", beerQuery.data], fetchImages);
 
-  if (beerQuery.error) return "An error has occurred: " + beerQuery.error;
+  if (beerQuery.error) {
+    return <div>An error has occurred!</div>;
+  }
 
   return (
     <div>
-      {beerQuery.data?.map((beer, i) => (
+      {beerQuery.data?.map((beer: Beer, i: number) => (
         <BeerCard
           key={beer.beerName}
           beer={beer}

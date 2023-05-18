@@ -45,13 +45,16 @@ const Order: React.FC<OrderProps> = (props) => {
         },
       };
 
-      const res = await fetch("https://localhost:7040/api/order/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(order),
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_CUSTOMER_API_URL}/order/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(order),
+        }
+      );
       const data = await res.json();
       console.log(data);
 

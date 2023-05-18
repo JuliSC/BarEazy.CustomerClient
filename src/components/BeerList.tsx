@@ -9,12 +9,9 @@ type BeerListType = Array<Array<string | number>>;
 const BeerList = () => {
   const fetchBeers = async () => {
     // Implement API call here when ready
-    const beerRes = await fetch(
-      `${process.env.REACT_APP_BAR_API_URL}/api/beers`,
-      {
-        method: "GET",
-      }
-    );
+    const beerRes = await fetch(`${import.meta.env.VITE_BAR_API_URL}/beers`, {
+      method: "GET",
+    });
 
     const beers = await beerRes.json();
     console.log(beers);
@@ -81,7 +78,9 @@ const BeerList = () => {
   const imageQuery = useQuery(["images", beerQuery.data], fetchImages);
 
   if (beerQuery.error) {
-    return <div>An error has occurred!</div>;
+    console.log(beerQuery.error);
+
+    return <div>{import.meta.env.VITE_BAR_API_URL}</div>;
   }
 
   return (

@@ -28,6 +28,7 @@ const BeerList = () => {
 
     return await purgedBeers;
 
+    // comments
     // return [
     //   {
     //     name: "Carlsberg",

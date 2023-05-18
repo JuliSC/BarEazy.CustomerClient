@@ -46,7 +46,7 @@ const Order: React.FC<OrderProps> = (props) => {
       };
 
       const res = await fetch(
-        `${process.env.VITE_CUSTOMER_API_URL}/order/create`,
+        `${import.meta.env.VITE_CUSTOMER_API_URL}/order/create`,
         {
           method: "POST",
           headers: {

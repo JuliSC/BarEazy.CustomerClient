@@ -23,7 +23,7 @@ const BeerList = () => {
           .some((otherBeer: Beer) => otherBeer.beerName === beer.beerName)
     );
 
-    return await purgedBeers;
+    return await beers;
 
     // return [
     //   {
@@ -61,12 +61,21 @@ const BeerList = () => {
 
   const fetchImages = async ({queryKey}: {queryKey: any}) => {
     let arr = [];
-    for (const item in queryKey[1]) {
-      let res = await fetch("https://picsum.photos/300/200", {
-        method: "GET",
-      });
+    for (const item of queryKey[1]) {
+      if (item.imageUrl) {
+        const imageUrlString = await fetch(
+          `${import.meta.env.VITE_BAR_API_URL}/files/${item.imageUrl.replace(
+            ".png",
+            ""
+          )}`,
+          {
+            method: "GET",
+          }
+        );
 
-      arr.push(res.url);
+        const imageUrl = await imageUrlString.json();
+        arr.push(imageUrl.url);
+      }
     }
 
     return arr;
@@ -86,9 +95,9 @@ const BeerList = () => {
     <div>
       {beerQuery.data?.map((beer: Beer, i: number) => (
         <BeerCard
-          key={beer.beerName}
+          key={beer.beerName + i}
           beer={beer}
-          img={imageQuery.data ? imageQuery.data[i].toString() : ""}
+          img={imageQuery.data ? imageQuery.data[i] : ""}
         />
       ))}
     </div>

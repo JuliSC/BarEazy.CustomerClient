@@ -4,4 +4,5 @@ export interface Beer {
   beerDescription: string;
   beerVolume: number;
   alcoholPercentage: number;
+  imageUrl?: string;
 }

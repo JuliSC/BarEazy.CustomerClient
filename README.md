@@ -1,6 +1,6 @@
 # BarEazy.CustomerClient
 
-This repository contains a the code for a customer client for BarEazy.
+This repository contains the code for a customer client for BarEazy.
 
 ## Installation Guide
 

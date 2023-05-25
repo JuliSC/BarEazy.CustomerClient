@@ -2,6 +2,9 @@
 
 This repository contains the code for a customer client for BarEazy.
 
+## Link to deployment
+https://bar-eazy-customer-client.vercel.app/
+
 ## Installation Guide
 
 Follow these steps to set up and run the project on your local machine:
